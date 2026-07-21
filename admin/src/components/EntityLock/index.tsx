@@ -186,7 +186,12 @@ export default function EntityLock() {
           </Dialog.Body>
           <Dialog.Footer gap={2}>
             <Dialog.Action onClick={() => navigate(-1)}>
-              <Button fullWidth variant="tertiary">
+              <Button
+                fullWidth
+                variant={
+                  (lockStatus.settings?.showTakeoverButton ?? false) ? 'tertiary' : undefined
+                }
+              >
                 {formatMessage({
                   id: getTranslation('ModalWindow.CurrentlyEditing.Button'),
                   defaultMessage: 'Go Back',
