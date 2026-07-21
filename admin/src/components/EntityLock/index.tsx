@@ -5,7 +5,7 @@ import { io, Socket } from 'socket.io-client';
 
 import { useMatch, useNavigate } from 'react-router-dom';
 
-import { Modal } from '@strapi/design-system';
+import { Dialog } from '@strapi/design-system';
 import { useAuth, useFetchClient } from '@strapi/strapi/admin';
 import { getTranslation } from '../../utils/getTranslation';
 import { getStoredToken } from '../../utils/getStoredToken';
@@ -152,60 +152,60 @@ export default function EntityLock() {
 
   return (
     lockStatus.isLocked && (
-      <Modal.Root defaultOpen={true}>
-        <Modal.Content>
-          <Modal.Header>
-            <Typography fontWeight="bold" textColor="neutral800" tag="h2" id="title">
+      <Dialog.Root defaultOpen={true}>
+        <Dialog.Content onEscapeKeyDown={(e) => e.preventDefault()}>
+          <Dialog.Header>
               {formatMessage({
                 id: getTranslation('ModalWindow.CurrentlyEditing'),
-                defaultMessage: 'This entry is currently edited',
+                defaultMessage: 'Someone is editing this record',
               })}
-            </Typography>
-          </Modal.Header>
-          <Modal.Body>
-            <Typography>
+          </Dialog.Header>
+          <Dialog.Body>
+            <Typography variant="omega" textAlign="center">
               {formatMessage(
                 {
-                  id: lockStatus.isTakenOver ? getTranslation('ModalWindow.CurrentlyTakenOverBody') : getTranslation('ModalWindow.CurrentlyEditingBody'),
-                  defaultMessage: lockStatus.isTakenOver ? 'This entry is taken over for editing by {username}' : 'This entry is currently edited by {username}',
+                  id: lockStatus.isTakenOver
+                    ? getTranslation('ModalWindow.CurrentlyTakenOverBody')
+                    : getTranslation('ModalWindow.CurrentlyEditingBody'),
+                  defaultMessage: lockStatus.isTakenOver
+                    ? 'This entry is taken over for editing by {username}'
+                    : 'This entry is currently edited by {username}',
                 },
                 {
-                  username: <Typography fontWeight="bold">{lockStatus.username}</Typography>,
+                  username: (
+                    <>
+                      <br />
+                      <Typography variant="epsilon" fontWeight="bold">
+                        {lockStatus.username}
+                      </Typography>
+                    </>
+                  ),
                 }
               )}
             </Typography>
-          </Modal.Body>
-          <Modal.Footer>
-            <Modal.Close>
-              <Button variant="tertiary">OK</Button>
-            </Modal.Close>
-            <Flex gap={2} direction="row">
-              {
-                (lockStatus.settings?.showTakeoverButton ?? false) && (
-                  <Button
-                  onClick={lockStatus.takeoverEntityLock}
-                >
+          </Dialog.Body>
+          <Dialog.Footer gap={2}>
+            <Dialog.Action onClick={() => navigate(-1)}>
+              <Button fullWidth variant="tertiary">
+                {formatMessage({
+                  id: getTranslation('ModalWindow.CurrentlyEditing.Button'),
+                  defaultMessage: 'Go Back',
+                })}
+              </Button>
+            </Dialog.Action>
+            {(lockStatus.settings?.showTakeoverButton ?? false) && (
+              <Dialog.Action onClick={lockStatus.takeoverEntityLock}>
+                <Button fullWidth>
                   {formatMessage({
                     id: getTranslation('ModalWindow.TakeoverCurrentlyEditing.Button'),
                     defaultMessage: 'Takeover',
                   })}
                 </Button>
-                )
-              }
-            <Button
-              onClick={() => {
-                navigate(-1);
-              }}
-            >
-              {formatMessage({
-                id: getTranslation('ModalWindow.CurrentlyEditing.Button'),
-                defaultMessage: 'Go Back',
-              })}
-            </Button>
-            </Flex>
-          </Modal.Footer>
-        </Modal.Content>
-      </Modal.Root>
+              </Dialog.Action>
+            )}
+          </Dialog.Footer>
+        </Dialog.Content>
+      </Dialog.Root>
     )
   );
 }
