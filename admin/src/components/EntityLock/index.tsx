@@ -169,7 +169,7 @@ export default function EntityLock() {
                     : getTranslation('ModalWindow.CurrentlyEditingBody'),
                   defaultMessage: lockStatus.isTakenOver
                     ? 'This entry is taken over for editing by {username}'
-                    : 'This entry is currently edited by {username}',
+                    : 'This entry is currently being edited by {username}',
                 },
                 {
                   username: (
