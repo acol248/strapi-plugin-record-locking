@@ -3,5 +3,6 @@
   "ModalWindow.CurrentlyEditingBody": "S tímto záznamem aktuálně pracuje {username}",
   "ModalWindow.CurrentlyEditing.Button": "Zpět na seznam",
   "ModalWindow.TakeoverCurrentlyEditing.Button": "Převzít",
-  "ModalWindow.CurrentlyTakenOverBody": "Tento záznam přebírá k úpravám uživatel {username}."
+  "ModalWindow.CurrentlyTakenOverBody": "Tento záznam přebírá k úpravám uživatel {username}.",
+  "ModalWindow.TakeoverCurrentlyEditing.Error": "Nepodařilo se převzít zámek entity"
 }

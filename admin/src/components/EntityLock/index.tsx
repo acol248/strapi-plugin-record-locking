@@ -6,7 +6,7 @@ import { io, Socket } from 'socket.io-client';
 import { useMatch, useNavigate } from 'react-router-dom';
 
 import { Dialog } from '@strapi/design-system';
-import { useAuth, useFetchClient } from '@strapi/strapi/admin';
+import { useAuth, useFetchClient, useNotification } from '@strapi/strapi/admin';
 import { getTranslation } from '../../utils/getTranslation';
 import { getStoredToken } from '../../utils/getStoredToken';
 
@@ -50,6 +50,8 @@ const useLockingData = () => {
 };
 
 const useLockStatus = () => {
+  const { toggleNotification } = useNotification();
+  const { formatMessage } = useIntl();
   const { get } = useFetchClient();
   const lockingData = useLockingData();
 
@@ -129,6 +131,14 @@ const useLockStatus = () => {
           setIsTakenOver(false);
         } else {
           console.warn(response.error);
+
+          toggleNotification({ 
+            type: 'danger', 
+            title: formatMessage({
+              id: getTranslation('ModalWindow.TakeoverCurrentlyEditing.Error'),
+              defaultMessage: 'Failed to takeover the entity lock',
+            }),
+          })
         }
     });
   };

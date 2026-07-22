@@ -3,5 +3,6 @@
   "ModalWindow.CurrentlyEditingBody": "Dieser Eintrag wird gerade durch {username} bearbeitet.",
   "ModalWindow.CurrentlyEditing.Button": "Geh zurück",
   "ModalWindow.TakeoverCurrentlyEditing.Button": "Übernahme",
-  "ModalWindow.CurrentlyTakenOverBody": "Dieser Eintrag wird von {username} bearbeitet."
+  "ModalWindow.CurrentlyTakenOverBody": "Dieser Eintrag wird von {username} bearbeitet.",
+  "ModalWindow.TakeoverCurrentlyEditing.Error": "Die Übernahme der Entitätssperre ist fehlgeschlagen"
 }

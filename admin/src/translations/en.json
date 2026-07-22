@@ -3,5 +3,6 @@
   "ModalWindow.CurrentlyEditingBody": "This entry is currently being edited by {username}",
   "ModalWindow.CurrentlyEditing.Button": "Go Back",
   "ModalWindow.TakeoverCurrentlyEditing.Button": "Takeover",
-  "ModalWindow.CurrentlyTakenOverBody": "This entry is taken over for editing by {username}"
+  "ModalWindow.CurrentlyTakenOverBody": "This entry is taken over for editing by {username}",
+  "ModalWindow.TakeoverCurrentlyEditing.Error": "Failed to takeover the entity lock"
 }
