@@ -167,7 +167,7 @@ export default function EntityLock() {
               {formatMessage(
                 {
                   id: lockStatus.isTakenOver ? getTranslation('ModalWindow.CurrentlyTakenOverBody') : getTranslation('ModalWindow.CurrentlyEditingBody'),
-                  defaultMessage: lockStatus.isTakenOver ? 'This entry is taken over for editing by {username}' : 'This entry is currently edited by {username}',
+                  defaultMessage: lockStatus.isTakenOver ? 'This entry is taken over for editing by {username}' : 'This entry is currently being edited by {username}',
                 },
                 {
                   username: <Typography fontWeight="bold">{lockStatus.username}</Typography>,
