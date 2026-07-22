@@ -1,4 +1,4 @@
-import { Button, Typography, Flex } from '@strapi/design-system';
+import { Button, Typography } from '@strapi/design-system';
 import { useEffect, useRef, useState } from 'react';
 import { useIntl } from 'react-intl';
 import { io, Socket } from 'socket.io-client';
