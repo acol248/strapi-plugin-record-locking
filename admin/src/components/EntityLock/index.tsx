@@ -171,28 +171,30 @@ export default function EntityLock() {
               })}
           </Dialog.Header>
           <Dialog.Body>
-            <Typography variant="omega" textAlign="center">
-              {formatMessage(
-                {
-                  id: lockStatus.isTakenOver
-                    ? getTranslation('ModalWindow.CurrentlyTakenOverBody')
-                    : getTranslation('ModalWindow.CurrentlyEditingBody'),
-                  defaultMessage: lockStatus.isTakenOver
-                    ? 'This entry is taken over for editing by {username}'
-                    : 'This entry is currently being edited by {username}',
-                },
-                {
-                  username: (
-                    <>
-                      <br />
-                      <Typography variant="epsilon" fontWeight="bold">
-                        {lockStatus.username}
-                      </Typography>
-                    </>
-                  ),
-                }
-              )}
-            </Typography>
+            <Dialog.Description>
+              <Typography variant="omega" textAlign="center">
+                {formatMessage(
+                  {
+                    id: lockStatus.isTakenOver
+                      ? getTranslation('ModalWindow.CurrentlyTakenOverBody')
+                      : getTranslation('ModalWindow.CurrentlyEditingBody'),
+                    defaultMessage: lockStatus.isTakenOver
+                      ? 'This entry is taken over for editing by {username}'
+                      : 'This entry is currently being edited by {username}',
+                  },
+                  {
+                    username: (
+                      <>
+                        <br />
+                        <Typography variant="epsilon" fontWeight="bold">
+                          {lockStatus.username}
+                        </Typography>
+                      </>
+                    ),
+                  }
+                )}
+              </Typography>
+            </Dialog.Description>
           </Dialog.Body>
           <Dialog.Footer gap={2}>
             <Dialog.Action onClick={() => navigate(-1)}>
